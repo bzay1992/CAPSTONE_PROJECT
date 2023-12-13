@@ -1,0 +1,82 @@
+REQUIREMENTS SPECIFICATIONS DOCUMENT
+1.	 Introduction –
+a.	Purpose-:
+The purpose of this project is to increase the revenue of this company by understanding the data received from the competitors utilizing Big data Ecosystem to analyze. This is more focused on customizing the different  Insurance policies offered to the customer based on customers aspects such as behavior, condition,etc.
+ 
+b.	Intended Audience and Use :
+    Will have access to Data engineering’s , Business Analyst, Software Developer, Stake Holders, Testing team.
+
+c.	Product Scope:
+The Goal of this Project is to Help Insurance company to make appropriate business strategies to increase their revenue  and understand how company can beat other competitors attract customer utilizing data Pipelines to analyze customer’s data.
+
+D. Definitions and Acronyms :
+                              AWS: Amazon Web Services
+                              S3: Simple Storage Service
+                              EMR: Elastic MapReduce
+                             SQL: Structured Query Language
+                             Pyspark: Python with Spark
+
+
+
+                     Overall Description: 
+As data Engineer my next step is to build a Data Pipeline to filter out the data and analyze customer behavior. This data is for the data scientist, Business analyst and the company itself. We have existing product, but data  are new to compare with the competitors. Yes, it is an Add on product that offers wide range of Policies to attract different  group of people. 
+
+d.	User Needs – 
+I Data engineer will extract and cleaned  the data. And the cleaned data  product will be used by data scientist to develop algorithm according to needs of customer, Business Analyst and Other decision makers to Make business decisions.
+e.	Assumptions and Dependencies – 
+
+AWS S3 is the designated storage solution for the project.
+                      AWS EMR Studio for development, specifically using Pyspark
+                       Data processing will be performed using AWS Redshift.
+                      Databricks is for data analysis
+                      Jira for tracking, Project Management
+                     GitHub to store code and Version control
+  
+System Features and Requirements.
+
+Functional Requirements – 
+Functional requirements are essential to the product's functionality. They include:
+Data cleaning modules for Patients, Subscriber, Claims, and Group_subgroup datasets.
+Result generation modules for various use cases.
+Upload of cleaned data to Redshift tables.
+
+
+External Interface Requirements – 
+User Interfaces:
+Interaction with Databricks for data processing.
+Visualization tools for presenting results.
+
+Hardware Interfaces:
+Integration with AWS S3, Redshift, and EMR Studio.
+
+ Software Interfaces:
+Pyspark for data cleaning and analysis.
+Communications Interfaces:
+Data exchange between Databricks and AWS services.
+
+
+System Features –
+
+System features are required for the system to function, including:
+Data cleaning modules for each dataset.
+Result generation modules for use cases.
+Redshift tables for storing cleaned data and results.
+
+Nonfunctional Requirements 
+Performance Requirements:
+Efficient processing of large datasets using Pyspark.
+Timely generation of results for analysis.
+
+Safety Requirements:
+Ensure data privacy and compliance with healthcare regulations.
+
+Security Requirements:
+Secure access to AWS services and data storage.
+
+Usability Requirements:
+User-friendly interfaces for data analysts and business stakeholders.
+
+Scalability Requirements:
+The system should handle a growing volume of data over time.
+This Requirements Specifications Document provides a comprehensive overview of the Health Care Insurance Big Data Analysis project, ensuring clarity and alignment among stakeholders
+
