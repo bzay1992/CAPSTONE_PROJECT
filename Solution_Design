@@ -16,7 +16,18 @@
 ●	List female patients over the age of 40 that have undergone knee surgery in the past year
 
 
-3.	Database Design - List down all possible db(Redshift) tables here
+3.	Database Design :all possible db(Redshift) tables
+
+Claims
+Group
+Disease
+Grpsubgrp
+Hospital
+Patient_records
+Subgroup
+Subscriber
+
+
 a.	 Tables Metadata Info with Pk/FK relationship - 
 b.	 ER diagram - Optional
 4.	Technologies and Platforms to be used in this solution -List down list of technologies like spark, aws and databricks etc.
