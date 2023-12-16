@@ -27,27 +27,27 @@ b.	 ER diagram - Optional
 
 Claims.Json
 
-3.	Field	Data Type	Description
-claim_id	Numeric (Integer)	Identifier for a specific claim.
-patient_id	Numeric (Integer)	Identifier for the patient associated with the claim.
-disease_name	Text	Name of the disease associated with the claim.
-SUB_ID	Text	Sub-identifier for the claim.
-Claim_Or_Rejected	Text	Indicates if the claim was accepted or rejected.
-claim_type	Text	Type of the claim (e.g., claims of value, claims of policy, etc.).
-claim_amount	Numeric (Integer)	Amount associated with the claim.
-claim_date	Date	Date when the claim was made.
+3.	Field		| Data Type		| Description
+claim_id		| Numeric (Integer)		| Identifier for a specific claim.
+patient_id		| Numeric (Integer)		| Identifier for the patient associated with the claim.
+disease_name		| Text		| Name of the disease associated with the claim.
+SUB_ID		        | Text		| Sub-identifier for the claim.
+Claim_Or_Rejected		| Text		| Indicates if the claim was accepted or rejected.
+claim_type		| Text		| Type of the claim (e.g., claims of value, claims of policy, etc.).
+claim_amount		| Numeric (Integer)		| Amount associated with the claim.
+claim_date		| Date		| Date when the claim was made.
 
 Group
 
-Field	Data Type	Description
-Country	Text	Country where the insurance group operates.
-premium_written	Numeric (Integer)	Premium amount written by the insurance group.
-zipcode	Numeric (Integer)	Zip code associated with the insurance group.
-Grp_Id	Text	Identifier for the insurance group.
-Grp_Name	Text	Name of the insurance group.
-Grp_Type	Text	Type of the insurance group (e.g., Govt. or Private).
-city	Text	City where the insurance group is located.
-year	Numeric (Integer)	Year when the insurance group was established.
+Field		| Data Type	| 	Description
+Country		| Text		| Country where the insurance group operates.
+premium_written	| 	Numeric (Integer)		| Premium amount written by the insurance group.
+zipcode		| Numeric (Integer)		| Zip code associated with the insurance group.
+Grp_Id		| Text		| Identifier for the insurance group.
+Grp_Name		| Text		| Name of the insurance group.
+Grp_Type		| Text		| Type of the insurance group (e.g., Govt. or Private).
+city		| Text		| City where the insurance group is located.
+year		| Numeric (Integer)		| Year when the insurance group was established.
 
  
 Disease
