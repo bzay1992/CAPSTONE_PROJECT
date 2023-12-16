@@ -23,11 +23,11 @@ b.	 ER diagram - Optional
 
 
 
-2.	Database Design - 
+Tables Metadata Info with Pk/FK relationship - 
 
-Claims.Json
+Table: Claims
 
-3.	Field		| Data Type		| Description
+Field		| Data Type		| Description
 claim_id		| Numeric (Integer)		| Identifier for a specific claim.
 patient_id		| Numeric (Integer)		| Identifier for the patient associated with the claim.
 disease_name		| Text		| Name of the disease associated with the claim.
@@ -37,7 +37,7 @@ claim_type		| Text		| Type of the claim (e.g., claims of value, claims of policy
 claim_amount		| Numeric (Integer)		| Amount associated with the claim.
 claim_date		| Date		| Date when the claim was made.
 
-Group
+Table:Group
 
 Field		| Data Type	| 	Description
 Country		| Text		| Country where the insurance group operates.
@@ -50,20 +50,20 @@ city		| Text		| City where the insurance group is located.
 year		| Numeric (Integer)		| Year when the insurance group was established.
 
  
-Disease
+Table:Disease
 Field |	Data Type	| Description
 SubGrpID		| Text		| Subgroup identifier.
 Disease_ID		| Numeric (Integer)		| Identifier for the disease.
 Disease_name		| Text	| 	Name of the disease.
 		
 
-Grpsubgrp
+Table:Grpsubgrp
 Field	| 	Data Type		| Description
 SubGrp_ID		| Text		| Subgroup identifier.
 Grp_Id		| Text		| Group identifier.
 
 
-Hospital
+Table:Hospital
 Field		| Data Type		| Description
 Hospital_id		| Text		| Identifier for the hospital.
 Hospital_name		| Text		| Name of the hospital.
@@ -72,7 +72,7 @@ state		| Text		| State where the hospital is located.
 country		| Text		| Country where the hospital is located.
 
 
-Patient_records
+Table:Patient_records
 Field		| Data Type	| 	Description
 Patient_id	| 	Numeric (Integer)	| 	Identifier for the patient.
 Patient_name		| Text	| 	Name of the patient.
@@ -83,13 +83,13 @@ disease_name		| Text	| 	Name of the disease.
 city		| Text	| 	City where the patient is located.
 hospital_id		| Text		| Identifier for the hospital.
 
-Subgroup
+Table:Subgroup
 Field		| Data Type	| 	Description
 SubGrp_id		| Text		| Identifier for the subgroup.
 SubGrp_Name		| Text		| Name of the subgroup.
 Monthly_Premium	| 	Numeric (Integer)		| Monthly premium associated with the subgroup.
 
-Subscriber
+Table:Subscriber
 Field		| Data Type	| 	Description
 sub_id		| Text		| Identifier for the subscriber.
 first_name		| Text		| First name of the subscriber.
