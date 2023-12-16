@@ -1,6 +1,6 @@
-1.	Solution:
+Solution:
 
-2.	Use Cases:
+Use Cases:
 ●	Which disease has a maximum number of claims.
 ●	Find those Subscribers having age less than 30 and they subscribe any subgroup
 ●	Find out which group has maximum subgroups.
@@ -16,7 +16,7 @@
 ●	List female patients over the age of 40 that have undergone knee surgery in the past year
 
 
-3.	Database Design :all possible db(Redshift) tables
+Database Design :all possible db(Redshift) tables
 
 ● Claims
 ● Group
@@ -112,7 +112,7 @@ Elig_ind		| Text		| Eligibility indicator (Y/N) for subscription.
 eff_date		| Date		| Effective date of subscription.
 term_date		| Date		| Termination date of subscription.
 
-4.Technologies and Platforms to be used in this solution:
+Technologies and Platforms to be used in this solution:
 ●      AWS S3
 ●      AWS Redshift
 ●      Databricks
