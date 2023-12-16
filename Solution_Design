@@ -28,11 +28,6 @@
 ● Subscriber
 
 
-a.	 Tables Metadata Info with Pk/FK relationship - 
-b.	 ER diagram - Optional
-4.	Technologies and Platforms to be used in this solution -List down list of technologies like spark, aws and databricks etc.
-
-
 
 Tables Metadata Info with Pk/FK relationship - 
 
@@ -117,3 +112,11 @@ Elig_ind		| Text		| Eligibility indicator (Y/N) for subscription.
 eff_date		| Date		| Effective date of subscription.
 term_date		| Date		| Termination date of subscription.
 
+4.Technologies and Platforms to be used in this solution:
+●      AWS S3
+●      AWS Redshift
+●      Databricks
+●      AWS EMR Studio
+●      Pyspark
+●      Jira
+●      GitHub
