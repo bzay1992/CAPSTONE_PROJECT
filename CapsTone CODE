@@ -1,0 +1,210 @@
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "")
+spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/group/group.csv").show(10)
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("FindDuplicates").getOrCreate()
+
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/patient-records/Patient_records.csv").show()
+
+df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/patient-records/Patient_records.csv")
+
+# Show the first 10 rows of the DataFrame
+df.show(10)
+
+# show all duplicates
+all_duplicates_df = df.dropDuplicates()
+all_duplicates_df.show()
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+#  Spark session
+spark = SparkSession.builder.appName("FindMaxPremiumRate").getOrCreate()
+
+# S3 access 
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# Read CSV into DataFrame
+df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/group/group.csv")
+
+# Specifying the column for premium rate
+premium_rate_column = "premium_written"
+
+# maximum premium rate
+max_premium_rate = df.agg({premium_rate_column: "max"}).collect()[0][0]
+
+# Filter the DataFrame to get the row with the maximum premium rate
+df_max_premium = df.filter(col(premium_rate_column) == max_premium_rate)
+
+# Show the row with the maximum premium rate
+df_max_premium.show()
+
+# Stop Spark session
+spark.stop()
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Set up Spark session
+spark = SparkSession.builder.appName("FindDuplicates").getOrCreate()
+
+# Configure S3 access keys
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# Read CSV into DataFrame
+df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/group/group.csv")
+
+# columns for finding duplicates
+columns_for_duplicates = ["premium_written", "city", "year"]  
+
+# Find and display duplicates based on specified columns
+duplicates_df = df.groupBy(*columns_for_duplicates).count().filter("count > 1")
+duplicates_df.show()
+
+# Stop Spark session
+spark.stop()
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Set up Spark session
+spark = SparkSession.builder.appName("JoinExample").getOrCreate()
+
+# Configure S3 access keys
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# Read CSVs into DataFrames
+subscriber_df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/subscriber/subscriber.csv")
+group_df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/group/group.csv")
+
+# Perform a join operation
+joined_df = subscriber_df.join(group_df, subscriber_df["city"] == group_df["city"], "inner")
+
+# Show the joined DataFrame
+joined_df.show()
+
+# Stop Spark session
+spark.stop()
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Set up Spark session
+spark = SparkSession.builder.appName("FindDuplicatesAndNulls").getOrCreate()
+
+# Configure S3 access keys
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# Read JSON into DataFrame
+df = spark.read.options(header="True", inferSchema="True").json("s3://capstone101project/capstone-Healthcare/claims/claims.json")
+
+# Show the DataFrame
+df.show()
+
+# Find and display duplicate rows
+duplicates_df = df.groupBy(df.columns).count().filter("count > 1")
+print("Duplicate Rows:")
+duplicates_df.show(truncate=False)
+
+# Find and display rows with null values
+nulls_df = df.select([col(c).isNull().alias(c) for c in df.columns])
+print("Rows with Null Values:")
+nulls_df.show()
+
+# Stop Spark session
+spark.stop()
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+from pyspark.sql import SparkSession
+
+# Initialize a Spark session
+spark = SparkSession.builder.appName("DataCleaning").getOrCreate()
+
+# Configure S3 access keys
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# Specify S3 bucket and file path
+s3_bucket = "capstone101project"
+s3_file_path = "capstone-Healthcare/group/group.csv"
+s3_file_full_path = f"s3://capstone101project/capstone-Healthcare/group/group.csv"
+
+# Read CSV into DataFrame
+df = spark.read.options(header="True", inferSchema="True").csv(s3://capstone101project/capstone-Healthcare/group/group.csv)
+
+# Display the first 10 rows of the DataFrame
+df.show(10)
+
+# Drop rows with any null values
+df_cleaned = df.na.drop()
+
+# Display the cleaned DataFrame
+df_cleaned.show()
+
+# Stop the Spark session
+spark.stop()
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Set up Spark session
+spark = SparkSession.builder.appName("MaxClaimsPerDisease").getOrCreate()
+
+# Configure S3 access keys
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", "AKIAU2IVFCDI3P365XRR")
+spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", "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")
+
+# DataFrame to work with 'claims' DataFrame
+claims_df = spark.read.options(header="True", inferSchema="True").csv("s3://capstone101project/capstone-Healthcare/claims/claims.json")
+
+# Print the schema to see column names
+claims_df.printSchema()
+
+# Group by disease and count the number of claims
+claims_per_disease = claims_df.groupBy("disease_name").count()
+
+# Find the disease with the maximum number of claims
+max_claims_disease = claims_per_disease.orderBy(col("count").desc()).first()
+
+# Show the result
+print("Disease with Maximum Claims:")
+print("Disease Name:", max_claims_disease["disease_name"])
+print("Number of Claims:", max_claims_disease["count"])
+
+# Stop Spark session
+spark.stop()
+
+
+
+
+
